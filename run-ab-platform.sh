@@ -1,9 +1,17 @@
 #!/bin/bash
 
+
 VERSION=0.57.2
 # Run away from anything even a little scary
 set -o nounset # -u exit if a variable is not set
 set -o errexit # -f exit for any command failure"
+
+
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.26.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+
+
 
 # text color escape codes (please note \033 == \e but OSX doesn't respect the \e)
 blue_text='\033[94m'
